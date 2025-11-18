@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.log
+
+.env
+.env.*
+
+/staticfiles/
+/media/
+
+# vscode, pycharm 같은 IDE 설정
+.vscode/
+.idea/
