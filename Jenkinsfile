@@ -3,14 +3,12 @@ pipeline {
 
     environment {
         // Docker Hub Credentials (Jenkins에 만들어둔 ID)
-        DOCKERHUB_CREDENTIALS = credentials('dockerhub-jeegle16')   // 🔴 네 ID랑 맞을 것
-        // 도커 이미지 이름
-        DOCKER_IMAGE = "jeegle16/django-pybo"                        // 🔴 네 Docker Hub 레포
-        // Ops Repo URL
-        OPS_REPO_URL = "https://github.com/jeegle16-alt/minipro2_opsrepo.git"   // 🔴 네 GitHub 레포
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub-jeegle16') 
+        DOCKER_IMAGE = "jeegle16/django-pybo"     //Docker Hub 레포
+        OPS_REPO_URL = "https://github.com/jeegle16-alt/minipro2_opsrepo.git"   // GitHub 레포
     }
 
-    // ✅ 자동 CI 트리거: 1분마다 Git 변경 체크
+    // 자동 CI 트리거: 1분마다 Git 변경 체크
     triggers {
         pollSCM('H/1 * * * *')
     }
@@ -59,12 +57,12 @@ pipeline {
             }
         }
 
-        // ✅ 여기서부터 "자동 CD" 핵심: Ops Repo의 image 태그를 자동으로 바꿈
+        // Ops Repo의 image 태그를 자동으로 바꿈
         stage('Update Ops Repo') {
             steps {
                 script {
                     withCredentials([usernamePassword(
-                        credentialsId: 'github-token',  // 🔴 위에서 만든 GitHub credential ID
+                        credentialsId: 'github-token',  // 위에서 만든 GitHub credential ID
                         usernameVariable: 'GIT_USER',
                         passwordVariable: 'GIT_TOKEN'
                     )]) {
