@@ -3,7 +3,7 @@
 > Django 애플리케이션 소스코드 + Jenkins CI 파이프라인
 
 **FlowShip**은 Django 웹 서비스의 코드 변경부터 Kubernetes 배포까지 전 과정을 자동화하는 CI/CD 프로젝트입니다.  
-이 레포는 **애플리케이션 소스코드와 CI 파이프라인(Jenkinsfile)**을 관리하며, 배포 매니페스트는 [FlowShip-ops](https://github.com/<your-username>/FlowShip-ops) 레포에서 관리됩니다.
+이 레포는 애플리케이션 소스코드와 CI 파이프라인(Jenkinsfile)을 관리하며, 배포 매니페스트는 [FlowShip-ops](https://github.com/jeegle16-alt/FlowShip-ops) 레포에서 관리됩니다.
 
 ---
 
