@@ -9,21 +9,8 @@
 
 ## CI/CD Pipeline
 
-```
- Developer
-    │
-    ▼ git push
-┌─────────────────┐      ┌──────────┐      ┌────────────┐
-│  FlowShip-app   │─────▶│ Jenkins  │─────▶│ Docker Hub │
-│  (이 레포)       │ poll │ CI 서버   │ push │  Registry  │
-└─────────────────┘      └────┬─────┘      └──────┬─────┘
-                              │ sed + push          │ pull
-                       ┌──────▼──────┐      ┌──────▼──────┐
-                       │ FlowShip-ops│─────▶│ Kubernetes  │
-                       │ (Ops 레포)   │ sync │  Cluster    │
-                       └─────────────┘      └─────────────┘
-                              ▲ ArgoCD 감시
-```
+<img width="933" height="248" alt="image" src="https://github.com/user-attachments/assets/20ddd5c0-fdd3-411c-b936-1e2fbba2789a" />
+
 
 **파이프라인 흐름**: Code Push → Jenkins 자동 감지 (1분 polling) → Docker Build & Push → Ops Repo 이미지 태그 자동 업데이트 → ArgoCD 자동 Sync → Kubernetes 배포 완료
 
@@ -109,4 +96,4 @@ docker run -d -p 8000:8000 --name django-test django-pybo:local
 | Repo | 역할 |
 |------|------|
 | **FlowShip-app** (이 레포) | 애플리케이션 소스코드 + CI |
-| [**FlowShip-ops**](https://github.com/<your-username>/FlowShip-ops) | Kubernetes 매니페스트 + CD (ArgoCD) |
+| [**FlowShip-ops**](https://github.com/jeegle16-alt/FlowShip-ops) | Kubernetes 매니페스트 + CD (ArgoCD) |
